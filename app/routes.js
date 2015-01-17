@@ -10,7 +10,7 @@ var express = require('express')
   , app = exports;
 
 // Local includes
-var modHello = require('./hello');
+//var modHello = require('./hello');
 
 /** Global ROUTES **/
-app.get('/globalhello', modHello.callbacks.sayHello);
+//app.get('/globalhello', modHello.callbacks.sayHello);

@@ -5,9 +5,9 @@
 #
 # ATTENTION: You would want to use dev_start.sh script, while developing, instead.
 
-# Set NODE_PATH env variable to 'lib' so that application specific modules
+# Set NODE_PATH env variable to 'app' so that application specific modules
 # are first class citizens of the application
-export NODE_PATH=$PWD/lib:$NODE_PATH
+export NODE_PATH=$PWD/app:$NODE_PATH
 
 while getopts "t" opt; do
   case $opt in
@@ -15,7 +15,7 @@ while getopts "t" opt; do
   esac
 done
 
-if [ ! -d "$PWD/bin" -o ! -d "$PWD/lib" ]; then
+if [ ! -d "$PWD/bin" -o ! -d "$PWD/app" ]; then
   echo "Please run the shell script from project's root folder"
   exit
 fi
@@ -115,7 +115,7 @@ if [ $NODE_HOT_RELOAD -eq 0 ]; then
     NCMD="$NCMD -o $NODE_LOG_DIR/out.log"
     NCMD="$NCMD -e $NODE_LOG_DIR/err.log"
 else
-    NCMD="supervisor -n exit -w ./lib,$NODE_CONFIG_DIR,$NODE_LAUNCH_SCRIPT"
+    NCMD="supervisor -n exit -w ./app,$NODE_CONFIG_DIR,$NODE_LAUNCH_SCRIPT"
 fi
 
 NCMD="$NCMD $NODE_LAUNCH_SCRIPT"
